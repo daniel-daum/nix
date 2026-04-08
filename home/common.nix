@@ -19,7 +19,7 @@
       eval "$(/opt/homebrew/bin/brew shellenv)"
       export SSH_AUTH_SOCK="$HOME/Library/Containers/com.maxgoedjen.Secretive.SecretAgent/Data/socket.ssh"
     '';
-    initExtra = ''
+    initContent = ''
       source $(brew --prefix)/share/antidote/antidote.zsh
       antidote load
       ZSH_THEME="robbyrussell"
@@ -34,9 +34,10 @@
   '';
   programs.git = {
     enable = true;
-    userName = "daniel daum";
-    userEmail = "daniel@danieldaum.net";
-    extraConfig = {
+    signing.format = null;
+    settings = {
+      user.name = "daniel daum";
+      user.email = "daniel@danieldaum.net";
       push.autoSetupRemote = true;
       commit.gpgsign = true;
       gpg.format = "ssh";
@@ -54,17 +55,17 @@
       difftool.prompt = false;
       pager.difftool = "less -R";
       include.path = "~/.gitconfig.local";
-    };
-    aliases = {
-      st = "status --short --branch";
-      a  = "add";
-      ap = "add --patch";
-      c  = "commit";
-      cm = "commit --message";
-      pl = "pull --rebase";
-      ps = "push";
-      fp = "fetch --prune";
-      sweep = "!git branch --merged | grep -v '\\*\\|main\\|master' | xargs -n 1 git branch -d";
+      alias = {
+        st = "status --short --branch";
+        a  = "add";
+        ap = "add --patch";
+        c  = "commit";
+        cm = "commit --message";
+        pl = "pull --rebase";
+        ps = "push";
+        fp = "fetch --prune";
+        sweep = "!git branch --merged | grep -v '\\*\\|main\\|master' | xargs -n 1 git branch -d";
+      };
     };
   };
 
@@ -129,6 +130,7 @@
 
   programs.ssh = {
     enable = true;
+    enableDefaultConfig = false;
     extraConfig = ''
       Include ~/.orbstack/ssh/config
     '';

@@ -6,7 +6,7 @@ xcode-select --install
 =====
 Step 2: Install Rosetta
 =====
-softwareupdate --install-rosetta
+softwareupdate --install-rosetta --agree-to-license
 
 =====
 Step 3: Install Determinate Nix
@@ -14,8 +14,10 @@ Step 3: Install Determinate Nix
 curl --proto '=https' --tlsv1.2 -sSf -L \
   https://install.determinate.systems/nix | sh -s -- install
 
+Open a new terminal before continuing.
+
 =====
-Step 4: Install Determinate Nix
+Step 4: Clone nix config
 =====
 git clone https://tangled.org/danieldaum.net/nix ~/.config/nix
 
@@ -24,24 +26,29 @@ Step 5: Make Nix profile directory
 =====
 mkdir -p ~/.local/state/nix/profiles
 
-
 =====
 Step 6: First darwin rebuild
 =====
-cd ~/.config/nix && sudo nix run nix-darwin/master#darwin-rebuild -- switch --flake .
+# coruscant (laptop) or kashyyk (desktop)
+cd ~/.config/nix && sudo nix run nix-darwin/master#darwin-rebuild -- switch --flake .#coruscant
 
 =====
-Step 7: create .gitconfig.local
+Step 7: Set up Secretive
+=====
+Open Secretive, generate a key, note the key hash and public key before continuing.
+
+=====
+Step 8: create .gitconfig.local
 =====
 echo '[user]
     signingkey = /Users/daniel/Library/Containers/com.maxgoedjen.Secretive.SecretAgent/Data/PublicKeys/<key-hash>.pub' > ~/.gitconfig.local
 
 =====
-Step 8: create .gitallowedsigners
+Step 9: create .gitallowedsigners
 =====
 echo 'daniel@danieldaum.net ecdsa-sha2-nistp256 <public-key> <machine-name>@secretive.<hostname>.local' > ~/.gitallowedsigners
 
 =====
-Step 9: Add key to JJ
+Step 10: Add key to JJ
 =====
 jj config set --user signing.key "ecdsa-sha2-nistp256 <public-key>"
