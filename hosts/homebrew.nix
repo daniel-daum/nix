@@ -2,6 +2,7 @@
   homebrew = {
     enable = true;
     onActivation.cleanup = "none";
+    taps = [ "macos-fuse-t/homebrew-cask" ];
     brews = [ "mas" ];
     casks = [
       "alt-tab"
@@ -15,7 +16,6 @@
       "dbngin"
       "font-geist-mono"
       "fuse-t"
-      "fuse-t-sshfs"
       "iina"
       "little-snitch"
       "mac-mouse-fix"
