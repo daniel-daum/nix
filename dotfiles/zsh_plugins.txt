@@ -1,0 +1,2 @@
+getantidote/use-omz
+ohmyzsh/ohmyzsh path:themes/robbyrussell.zsh-theme

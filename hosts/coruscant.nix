@@ -1,4 +1,4 @@
 { ... }: {
-  imports = [ ./common.nix ./homebrew.nix];
+  imports = [ ./common.nix ./homebrew.nix ];
   networking.hostName = "coruscant";
 }
