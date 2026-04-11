@@ -1,0 +1,12 @@
+html
+toml
+git firefly
+dockerfile
+sql
+material icon theme
+terraform
+emmet
+swift
+nix
+docker compose
+package.wift lsp

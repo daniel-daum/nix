@@ -31,6 +31,7 @@
       "zed"
     ];
     masApps = {
+      "Anybox - Bookmark & Read Later" = 1593408455;
       "Brother iPrint&Scan" = 1193539993;
       "Developer" = 640199958;
       "Dropover" = 1355679052;

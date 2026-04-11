@@ -53,3 +53,12 @@ echo 'daniel@danieldaum.net ecdsa-sha2-nistp256 <public-key> <machine-name>@secr
 Step 10: Add key to JJ
 =====
 jj config set --user signing.key "ecdsa-sha2-nistp256 <public-key>"
+
+=====
+Step 10: Rebuild As Needed
+=====
+sudo darwin-rebuild switch --flake ~/.config/nix
+
+or
+# zshrc alias
+rebuild
