@@ -1,0 +1,7 @@
+[signing]
+behavior = "drop"
+backend = "ssh"
+key = "ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBDOAqk5teLMOm4Lbr2Ts/stwv5qVWRec5fwPA/yb+9F8MsnJ+iBAMbU3t208jf94TOgy6LezAv9mJWPKMynOnC0= kashyyk@secretive.kashyyk.local"
+
+[signing.backends.ssh]
+allowed-signers = "/Users/daniel/.gitallowedsigners"

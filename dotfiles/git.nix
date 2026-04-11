@@ -1,10 +1,11 @@
-{ ... }: {
+{ gitSigningKey, ... }: {
   programs.git = {
     enable = true;
     signing.format = null;
     settings = {
       user.name = "daniel daum";
       user.email = "daniel@danieldaum.net";
+      user.signingkey = gitSigningKey;
       push.autoSetupRemote = true;
       commit.gpgsign = true;
       gpg.format = "ssh";
@@ -21,7 +22,6 @@
       "difftool \"difftastic\"".cmd = "difft \"$LOCAL\" \"$REMOTE\"";
       difftool.prompt = false;
       pager.difftool = "less -R";
-      include.path = "~/.gitconfig.local";
       alias = {
         st = "status --short --branch";
         a  = "add";

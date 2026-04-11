@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{ pkgs, jjSigningConfig, gitAllowedSigner, ... }: {
   imports = [
     ../dotfiles/git.nix
     ../dotfiles/zsh.nix
@@ -22,7 +22,10 @@
   ];
 
   home.file.".zsh_plugins.txt".source = ../dotfiles/zsh_plugins.txt;
-  home.file.".config/jj/config.toml".source = ../dotfiles/jj.toml;
+  home.file.".gitallowedsigners".text = gitAllowedSigner + "\n";
+  home.sessionVariables.JJ_CONFIG = "$HOME/.config/jj/conf.d";
+  home.file.".config/jj/conf.d/config.toml".source = ../dotfiles/jj.toml;
+  home.file.".config/jj/conf.d/signing.toml".source = jjSigningConfig;
 
   home.file.".config/zed/keymap.json".source= ../dotfiles/zed_keymap.json;
   home.file.".config/zed/settings.json".source= ../dotfiles/zed_settings.json;

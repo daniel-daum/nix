@@ -1,0 +1,7 @@
+[signing]
+behavior = "drop"
+backend = "ssh"
+key = "ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBC+8q3HyMfBSLDTRjrHvXcH49947NPsNHq6TYwh+GzAtO0dF7ROZOmatuhvN5jXH/b9ybTJwIGyQweCZNTmuVJg= Coruscant@secretive.coruscant.local"
+
+[signing.backends.ssh]
+allowed-signers = "/Users/daniel/.gitallowedsigners"

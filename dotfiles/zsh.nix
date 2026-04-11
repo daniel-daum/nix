@@ -11,7 +11,7 @@
       ZSH_THEME="robbyrussell"
       alias ll="eza -al --group-directories-first --icons --git --color=auto --long --header --classify"
       alias cat='bat'
-      alias rebuild = sudo darwin-rebuild switch --flake ~/.config/nix
+      alias rebuild = "sudo darwin-rebuild switch --flake ~/.config/nix"
     '';
   };
 }
