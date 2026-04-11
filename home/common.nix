@@ -18,7 +18,7 @@
     difftastic
     jjui
     antidote
-    nil
+    nixd
   ];
 
   home.file.".zsh_plugins.txt".source = ../dotfiles/zsh_plugins.txt;
