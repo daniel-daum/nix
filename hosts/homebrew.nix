@@ -44,7 +44,6 @@
       "Pixelmator Pro" = 1289583905;
       "Scrap Paper" = 1448441317;
       "SnippetsLab" = 1006087419;
-      "TestFlight" = 899247664;
       "Wipr" = 1662217862;
     };
   };
