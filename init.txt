@@ -62,3 +62,13 @@ sudo darwin-rebuild switch --flake ~/.config/nix
 or
 # zshrc alias
 rebuild
+
+
+===== extras =====
+echo "your-public-key-here" >> ~/.ssh/authorized_keys
+
+# coruscant
+ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBC+8q3HyMfBSLDTRjrHvXcH49947NPsNHq6TYwh+GzAtO0dF7ROZOmatuhvN5jXH/b9ybTJwIGyQweCZNTmuVJg= Coruscant@secretive.coruscant.local
+
+# kashyyk
+ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBDOAqk5teLMOm4Lbr2Ts/stwv5qVWRec5fwPA/yb+9F8MsnJ+iBAMbU3t208jf94TOgy6LezAv9mJWPKMynOnC0= kashyyk@secretive.kashyyk.local
