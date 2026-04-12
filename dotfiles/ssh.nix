@@ -2,9 +2,9 @@
   programs.ssh = {
     enable = true;
     enableDefaultConfig = false;
-    extraConfig = ''
-      Include ~/.orbstack/ssh/config
-    '';
+    includes = [
+      "~/.orbstack/ssh/config"
+    ];
     matchBlocks = {
       "*" = {
         identityAgent = "/Users/daniel/Library/Containers/com.maxgoedjen.Secretive.SecretAgent/Data/socket.ssh";

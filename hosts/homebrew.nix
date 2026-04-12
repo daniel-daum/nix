@@ -35,6 +35,8 @@
       "crossover"
       "steam"
       "claude"
+      "gpg-suite"
+
     ];
     masApps = {
       "Anybox - Bookmark & Read Later" = 1593408455;
