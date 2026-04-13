@@ -19,6 +19,9 @@
     jjui
     antidote
     nixd
+    jq
+    claude-code
+    nil
   ];
 
   home.file.".zsh_plugins.txt".source = ../dotfiles/zsh_plugins.txt;

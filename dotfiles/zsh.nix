@@ -8,12 +8,9 @@
     initContent = ''
       source ${pkgs.antidote}/share/antidote/antidote.zsh
       antidote load
-      ZSH_THEME="robbyrussell"
       alias ll="eza -al --group-directories-first --icons --git --color=auto --long --header --classify"
       alias cat='bat'
       alias rebuild="sudo darwin-rebuild switch --flake ~/.config/nix"
-      # Auto-Warpify SSH shells
-      [[ "$-" == *i* ]] && printf '\eP$f{"hook": "SourcedRcFileForWarp", "value": { "shell": "zsh", "uname": "'$(uname)'" }}\x9c'
     '';
   };
 }

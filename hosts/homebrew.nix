@@ -5,6 +5,7 @@
     taps = [ "macos-fuse-t/homebrew-cask" ];
     brews = [ "mas" ];
     casks = [
+      "appcleaner"
       "alt-tab"
       "anytype"
       "bloom"

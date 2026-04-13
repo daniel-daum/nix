@@ -67,8 +67,13 @@ rebuild
 ===== extras =====
 echo "your-public-key-here" >> ~/.ssh/authorized_keys
 
+# jj/git
+jj git init --colocate
+git remote set-url origin git@tangled.org:danieldaum.net/nix
+jj bookmark track main --remote=origin
+
 # coruscant
-ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBC+8q3HyMfBSLDTRjrHvXcH49947NPsNHq6TYwh+GzAtO0dF7ROZOmatuhvN5jXH/b9ybTJwIGyQweCZNTmuVJg= Coruscant@secretive.coruscant.local
+ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBIaK2hJB4MiDRomD+XIS1KufbiPSR5c2Erpqom0BYmgAYjULdkYe5wn1zHlCh8VNxifKQ0lFCt7GJ4pLmH8cwAE= coruscant@secretive.coruscant.local
 
 # kashyyk
 ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBDOAqk5teLMOm4Lbr2Ts/stwv5qVWRec5fwPA/yb+9F8MsnJ+iBAMbU3t208jf94TOgy6LezAv9mJWPKMynOnC0= kashyyk@secretive.kashyyk.local
