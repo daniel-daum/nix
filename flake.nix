@@ -28,8 +28,8 @@
           home-manager.useUserPackages = true;
           home-manager.extraSpecialArgs = {
             jjSigningConfig = ./dotfiles/jj-signing-coruscant.toml;
-gitSigningKey = "/Users/daniel/Library/Containers/com.maxgoedjen.Secretive.SecretAgent/Data/PublicKeys/de7dcf62affac3514c9b45b3da139182.pub";
-            gitAllowedSigner = "daniel@danieldaum.net ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBC+8q3HyMfBSLDTRjrHvXcH49947NPsNHq6TYwh+GzAtO0dF7ROZOmatuhvN5jXH/b9ybTJwIGyQweCZNTmuVJg= Coruscant@secretive.coruscant.local";
+            gitSigningKey = "/Users/daniel/Library/Containers/com.maxgoedjen.Secretive.SecretAgent/Data/PublicKeys/7547f1a1ede91e329c6851fb20f37eaa.pub";
+            gitAllowedSigner = "daniel@danieldaum.net ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBIaK2hJB4MiDRomD+XIS1KufbiPSR5c2Erpqom0BYmgAYjULdkYe5wn1zHlCh8VNxifKQ0lFCt7GJ4pLmH8cwAE= coruscant@secretive.coruscant.local";
           };
           home-manager.users.daniel = import ./home/common.nix;
           nix-homebrew = {

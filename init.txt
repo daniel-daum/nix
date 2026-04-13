@@ -69,7 +69,7 @@ echo "your-public-key-here" >> ~/.ssh/authorized_keys
 
 # jj/git
 jj git init --colocate
-git remote set-url origin git@tangled.org:danieldaum.net/nix
+git remote set-url origin git@knot.danieldaum.net:danieldaum.net/nix
 jj bookmark track main --remote=origin
 
 # coruscant
