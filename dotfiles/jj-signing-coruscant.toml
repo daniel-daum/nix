@@ -4,4 +4,4 @@ backend = "ssh"
 key = "ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBIaK2hJB4MiDRomD+XIS1KufbiPSR5c2Erpqom0BYmgAYjULdkYe5wn1zHlCh8VNxifKQ0lFCt7GJ4pLmH8cwAE= coruscant@secretive.coruscant.local"
 
 [signing.backends.ssh]
-allowed-signers = "/Users/daniel/.gitallowedsigners"
+allowed-signers = "~/.gitallowedsigners"

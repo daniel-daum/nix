@@ -1,4 +1,5 @@
-{ ... }: {
+{ ... }:
+{
   homebrew = {
     enable = true;
     onActivation.cleanup = "none";
@@ -30,6 +31,10 @@
       "warp"
       "yubico-authenticator"
       "zed"
+      "discord"
+      "crossover"
+      "steam"
+      "claude"
     ];
     masApps = {
       "Anybox - Bookmark & Read Later" = 1593408455;
@@ -46,6 +51,7 @@
       "Scrap Paper" = 1448441317;
       "SnippetsLab" = 1006087419;
       "Wipr" = 1662217862;
+      "Proton Pass for Safari" = 6502835663;
     };
   };
 }

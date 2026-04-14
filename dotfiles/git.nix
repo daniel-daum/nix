@@ -1,16 +1,11 @@
-{ gitSigningKey, ... }: {
+{ lib, gitSigningKey ? null, ... }: {
   programs.git = {
     enable = true;
     signing.format = null;
     settings = {
       user.name = "daniel daum";
       user.email = "daniel@danieldaum.net";
-      user.signingkey = gitSigningKey;
       push.autoSetupRemote = true;
-      commit.gpgsign = true;
-      gpg.format = "ssh";
-      "gpg \"ssh\"".allowedSignersFile = "~/.gitallowedsigners";
-      tag.gpgSign = true;
       core.pager = "delta";
       interactive.diffFilter = "delta --color-only";
       delta = {
@@ -33,6 +28,12 @@
         fp = "fetch --prune";
         sweep = "!git branch --merged | grep -v '\\*\\|main\\|master' | xargs -n 1 git branch -d";
       };
+    } // lib.optionalAttrs (gitSigningKey != null) {
+      user.signingkey = gitSigningKey;
+      commit.gpgsign = true;
+      gpg.format = "ssh";
+      "gpg \"ssh\"".allowedSignersFile = "~/.gitallowedsigners";
+      tag.gpgSign = true;
     };
   };
 }

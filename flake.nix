@@ -31,12 +31,12 @@
             gitSigningKey = "/Users/daniel/Library/Containers/com.maxgoedjen.Secretive.SecretAgent/Data/PublicKeys/7547f1a1ede91e329c6851fb20f37eaa.pub";
             gitAllowedSigner = "daniel@danieldaum.net ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBIaK2hJB4MiDRomD+XIS1KufbiPSR5c2Erpqom0BYmgAYjULdkYe5wn1zHlCh8VNxifKQ0lFCt7GJ4pLmH8cwAE= coruscant@secretive.coruscant.local";
           };
-          home-manager.users.daniel = import ./home/common.nix;
+          home-manager.users.daniel = import ./home/macos.nix;
           nix-homebrew = {
                     enable = true;
                     enableRosetta = true;
                     user = "daniel";
-                    autoMigrate = true;  # migrates your existing brew install
+                    autoMigrate = true;
           };
         }
       ];
@@ -55,13 +55,45 @@
             gitSigningKey = "/Users/daniel/Library/Containers/com.maxgoedjen.Secretive.SecretAgent/Data/PublicKeys/d31dd9a441afe369d2645ee7261bf0cc.pub";
             gitAllowedSigner = "daniel@danieldaum.net ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBDOAqk5teLMOm4Lbr2Ts/stwv5qVWRec5fwPA/yb+9F8MsnJ+iBAMbU3t208jf94TOgy6LezAv9mJWPKMynOnC0= kashyyk@secretive.kashyyk.local";
           };
-          home-manager.users.daniel = import ./home/common.nix;
+          home-manager.users.daniel = import ./home/macos.nix;
           nix-homebrew = {
                     enable = true;
                     enableRosetta = true;
                     user = "daniel";
-                    autoMigrate = true;  # migrates your existing brew install
+                    autoMigrate = true;
           };
+        }
+      ];
+    };
+    nixosConfigurations."orbstack-coruscant" = nixpkgs.lib.nixosSystem {
+      system = "aarch64-linux";
+      modules = [
+        ./hosts/orbstack.nix
+        home-manager.nixosModules.home-manager
+        {
+          home-manager.useGlobalPkgs = true;
+          home-manager.useUserPackages = true;
+          home-manager.extraSpecialArgs = {
+            jjSigningConfig = ./dotfiles/jj-signing-coruscant.toml;
+            gitAllowedSigner = "daniel@danieldaum.net ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBIaK2hJB4MiDRomD+XIS1KufbiPSR5c2Erpqom0BYmgAYjULdkYe5wn1zHlCh8VNxifKQ0lFCt7GJ4pLmH8cwAE= coruscant@secretive.coruscant.local";
+          };
+          home-manager.users.daniel = import ./home/linux.nix;
+        }
+      ];
+    };
+    nixosConfigurations."orbstack-kashyyk" = nixpkgs.lib.nixosSystem {
+      system = "aarch64-linux";
+      modules = [
+        ./hosts/orbstack.nix
+        home-manager.nixosModules.home-manager
+        {
+          home-manager.useGlobalPkgs = true;
+          home-manager.useUserPackages = true;
+          home-manager.extraSpecialArgs = {
+            jjSigningConfig = ./dotfiles/jj-signing-kashyyk.toml;
+            gitAllowedSigner = "daniel@danieldaum.net ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBDOAqk5teLMOm4Lbr2Ts/stwv5qVWRec5fwPA/yb+9F8MsnJ+iBAMbU3t208jf94TOgy6LezAv9mJWPKMynOnC0= kashyyk@secretive.kashyyk.local";
+          };
+          home-manager.users.daniel = import ./home/linux.nix;
         }
       ];
     };
