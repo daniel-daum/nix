@@ -8,6 +8,39 @@
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
   // practical
+  "restore_on_startup": "launchpad",
+  "ssh_connections": [
+    {
+      "host": "ziost",
+      "args": [],
+      "projects": [
+        {
+          "paths": ["/home/maliciouspickle"]
+        }
+      ]
+    },
+    {
+      "host": "orb",
+      "args": [],
+      "projects": [
+        {
+          "paths": ["/home/daniel/starforge"]
+        }
+      ]
+    },
+    {
+      "host": "dxun",
+      "username": "maliciouspickle",
+      "args": [],
+      "projects": []
+    },
+    {
+      "host": "narshaddaa",
+      "username": "maliciouspickle",
+      "args": [],
+      "projects": []
+    }
+  ],
   "terminal": {
     "shell": "system"
   },
@@ -16,7 +49,7 @@
   },
   "redact_private_values": false,
   "agent": {
-    "play_sound_when_agent_done": true,
+    "play_sound_when_agent_done": "always",
     "default_profile": "write",
     "model_parameters": []
   },

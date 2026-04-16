@@ -1,5 +1,11 @@
 { ... }: {
   system.defaults = {
+    CustomSystemPreferences = {
+      "com.apple.loginwindow" = {
+        HideUserAvatarAndName = true;
+      };
+    };
+
     NSGlobalDomain = {
       AppleInterfaceStyle = "Dark";
       NSAutomaticCapitalizationEnabled = false;

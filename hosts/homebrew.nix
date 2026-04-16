@@ -54,6 +54,7 @@
       "SnippetsLab" = 1006087419;
       "Wipr" = 1662217862;
       "Proton Pass for Safari" = 6502835663;
+      "Xcode 26.4.1" = 497799835;
     };
   };
 }
