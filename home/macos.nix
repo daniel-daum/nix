@@ -31,6 +31,7 @@
   home.file.".config/jj/conf.d/signing.toml".source = jjSigningConfig;
 
   home.file.".config/zed/keymap.json".source = ../dotfiles/zed_keymap.json;
-  home.file.".config/zed/settings.json".source = ../dotfiles/zed_settings.json;
+  # settings.json is NOT managed by home-manager — Zed needs to write to it
+  # (e.g. ssh_connections for remote dev). Keep a reference copy at dotfiles/zed_settings.json.
   home.file.".config/zed/themes/violet_one_dark.json".source = ../dotfiles/zed_theme.json;
 }

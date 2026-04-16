@@ -1,8 +1,10 @@
-{ pkgs, jjSigningConfig, gitAllowedSigner, ... }: {
+{ pkgs, configName, jjSigningConfig, gitAllowedSigner, ... }: {
   imports = [
     ../dotfiles/git.nix
-    ../dotfiles/zsh-linux.nix
+    ../dotfiles/zsh-mars.nix
   ];
+
+  _module.args.configName = configName;
 
   home.username = "daniel";
   home.homeDirectory = "/home/daniel";
@@ -27,10 +29,6 @@
   home.file.".config/jj/conf.d/config.toml".source = ../dotfiles/jj.toml;
   home.file.".config/jj/conf.d/signing.toml".source = jjSigningConfig;
 
-  programs.zed-editor = {
-    enable = true;
-    installRemoteServer = true;
-  };
 
   programs.direnv = {
     enable = true;

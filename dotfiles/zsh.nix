@@ -11,6 +11,13 @@
       alias ll="eza -al --group-directories-first --icons --git --color=auto --long --header --classify"
       alias cat='bat'
       alias rebuild="sudo darwin-rebuild switch --flake ~/.config/nix"
+      jj() {
+        if [[ "$1" == "send" ]]; then
+          command jj new && command jj tug && command jj push
+        else
+          command jj "$@"
+        fi
+      }
     '';
   };
 }

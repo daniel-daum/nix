@@ -65,35 +65,41 @@
         }
       ];
     };
-    nixosConfigurations."orbstack-coruscant" = nixpkgs.lib.nixosSystem {
+
+    nixosConfigurations."mars-coruscant" = nixpkgs.lib.nixosSystem {
       system = "aarch64-linux";
       modules = [
-        ./hosts/orbstack.nix
+        ./hosts/mars.nix
         home-manager.nixosModules.home-manager
         {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
           home-manager.extraSpecialArgs = {
+            configName = "mars-coruscant";
             jjSigningConfig = ./dotfiles/jj-signing-coruscant.toml;
+            gitSigningKey = "key::ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBIaK2hJB4MiDRomD+XIS1KufbiPSR5c2Erpqom0BYmgAYjULdkYe5wn1zHlCh8VNxifKQ0lFCt7GJ4pLmH8cwAE= coruscant@secretive.coruscant.local";
             gitAllowedSigner = "daniel@danieldaum.net ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBIaK2hJB4MiDRomD+XIS1KufbiPSR5c2Erpqom0BYmgAYjULdkYe5wn1zHlCh8VNxifKQ0lFCt7GJ4pLmH8cwAE= coruscant@secretive.coruscant.local";
           };
-          home-manager.users.daniel = import ./home/linux.nix;
+          home-manager.users.daniel = import ./home/mars.nix;
         }
       ];
     };
-    nixosConfigurations."orbstack-kashyyk" = nixpkgs.lib.nixosSystem {
+
+    nixosConfigurations."mars-kashyyk" = nixpkgs.lib.nixosSystem {
       system = "aarch64-linux";
       modules = [
-        ./hosts/orbstack.nix
+        ./hosts/mars.nix
         home-manager.nixosModules.home-manager
         {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
           home-manager.extraSpecialArgs = {
+            configName = "mars-kashyyk";
             jjSigningConfig = ./dotfiles/jj-signing-kashyyk.toml;
+            gitSigningKey = "key::ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBDOAqk5teLMOm4Lbr2Ts/stwv5qVWRec5fwPA/yb+9F8MsnJ+iBAMbU3t208jf94TOgy6LezAv9mJWPKMynOnC0= kashyyk@secretive.kashyyk.local";
             gitAllowedSigner = "daniel@danieldaum.net ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBDOAqk5teLMOm4Lbr2Ts/stwv5qVWRec5fwPA/yb+9F8MsnJ+iBAMbU3t208jf94TOgy6LezAv9mJWPKMynOnC0= kashyyk@secretive.kashyyk.local";
           };
-          home-manager.users.daniel = import ./home/linux.nix;
+          home-manager.users.daniel = import ./home/mars.nix;
         }
       ];
     };

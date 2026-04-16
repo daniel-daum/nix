@@ -1,0 +1,41 @@
+=====
+Step 1: Create the VM
+=====
+orb create --set-password nixos:25.11 mars
+
+=====
+Step 2: Stage nix config files
+=====
+# Nix flakes only see git-tracked files
+cd ~/.config/nix && git add -A
+
+=====
+Step 3: First rebuild
+=====
+# coruscant (desktop) or kashyyk (laptop)
+ssh -t orb 'sudo nixos-rebuild switch --flake /mnt/mac/Users/daniel/.config/nix#mars-coruscant --option extra-experimental-features "nix-command flakes"'
+ssh -t orb 'sudo nixos-rebuild switch --flake /mnt/mac/Users/daniel/.config/nix#mars-kashyyk --option extra-experimental-features "nix-command flakes"'
+
+The --option flag is only needed for the first rebuild.
+
+=====
+Step 4: Reconnect
+=====
+ssh orb
+
+You should now be in zsh with all tools available.
+
+=====
+Step 5: Rebuild As Needed
+=====
+sudo nixos-rebuild switch --flake /mnt/mac/Users/daniel/.config/nix#mars-coruscant
+
+or
+# zshrc alias
+rebuild
+
+
+===== gotchas =====
+- "path does not exist" on rebuild  → git add -A on macOS first
+- sudo fails over ssh               → use ssh -t orb
+- tools missing after rebuild        → log out and back in

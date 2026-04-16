@@ -1,18 +1,68 @@
-# NixOS configuration for OrbStack VM
-# Rebuild: sudo nixos-rebuild switch --flake /mnt/mac/Users/daniel/.config/nix#orbstack
-{ pkgs, ... }: {
-  imports = [ /etc/nixos/hardware-configuration.nix ];
+# OrbStack integration module for NixOS.
+# Based on OrbStack's auto-generated /etc/nixos/orbstack.nix.
+# If OrbStack updates break things, compare with /etc/nixos/orbstack.nix on a fresh VM.
 
-  nixpkgs.config.allowUnfree = true;
-  system.stateVersion = "25.11";
+{ lib, config, ... }:
 
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+{
+  # Add OrbStack CLI tools to PATH
+  environment.shellInit = ''
+    . /opt/orbstack-guest/etc/profile-early
 
-  users.users.daniel = {
-    isNormalUser = true;
-    extraGroups = [ "wheel" ];
-    shell = pkgs.zsh;
-  };
+    # add your customizations here
 
-  programs.zsh.enable = true;
+    . /opt/orbstack-guest/etc/profile-late
+  '';
+
+  # Enable documentation
+  documentation.man.enable = true;
+  documentation.doc.enable = true;
+  documentation.info.enable = true;
+
+  # Disable systemd-resolved
+  services.resolved.enable = false;
+  environment.etc."resolv.conf".source = "/opt/orbstack-guest/etc/resolv.conf";
+
+  # Faster DHCP - OrbStack uses SLAAC exclusively
+  networking.dhcpcd.extraConfig = ''
+    noarp
+    noipv6
+  '';
+
+  # Disable sshd - OrbStack has a built-in SSH server
+  services.openssh.enable = false;
+
+  # systemd watchdog fixes for container environment
+  systemd.services."systemd-oomd".serviceConfig.WatchdogSec = 0;
+  systemd.services."systemd-userdbd".serviceConfig.WatchdogSec = 0;
+  systemd.services."systemd-udevd".serviceConfig.WatchdogSec = 0;
+  systemd.services."systemd-timesyncd".serviceConfig.WatchdogSec = 0;
+  systemd.services."systemd-timedated".serviceConfig.WatchdogSec = 0;
+  systemd.services."systemd-portabled".serviceConfig.WatchdogSec = 0;
+  systemd.services."systemd-nspawn@".serviceConfig.WatchdogSec = 0;
+  systemd.services."systemd-machined".serviceConfig.WatchdogSec = 0;
+  systemd.services."systemd-localed".serviceConfig.WatchdogSec = 0;
+  systemd.services."systemd-logind".serviceConfig.WatchdogSec = 0;
+  systemd.services."systemd-journald@".serviceConfig.WatchdogSec = 0;
+  systemd.services."systemd-journald".serviceConfig.WatchdogSec = 0;
+  systemd.services."systemd-journal-remote".serviceConfig.WatchdogSec = 0;
+  systemd.services."systemd-journal-upload".serviceConfig.WatchdogSec = 0;
+  systemd.services."systemd-importd".serviceConfig.WatchdogSec = 0;
+  systemd.services."systemd-hostnamed".serviceConfig.WatchdogSec = 0;
+  systemd.services."systemd-homed".serviceConfig.WatchdogSec = 0;
+  systemd.services."systemd-networkd".serviceConfig.WatchdogSec = lib.mkIf config.systemd.network.enable 0;
+
+  # SSH config - include OrbStack's SSH config for agent forwarding etc.
+  programs.ssh.extraConfig = ''
+    Include /opt/orbstack-guest/etc/ssh_config
+  '';
+
+  # Indicate builder support for emulated architectures
+  nix.settings.extra-platforms = [
+    "x86_64-linux"
+    "i686-linux"
+  ];
+
+  # OrbStack user group
+  users.groups.orbstack.gid = 67278;
 }
